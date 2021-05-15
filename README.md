@@ -1,23 +1,50 @@
-# redux state manager
+# react-use-modal
 
-Easy, typescript friendly, redux store management for APIs and sockets. [Read the docs][docs] to know more
+Hook to wrap a component and show it as a modal.
 
-## What is it?
-Redux State Manager is a library, written on top of redux-saga, that removes boilerplate code and provides and intuitive mode to call `APIs`, received `WebSocket` messages and manipulate `state` data. 
+It returns:
+- Wrapped component as a new component.
+- Display function
+- Status as a boolean.
 
+## Why useModal
 
-## Motivation
-Redux-Saga is a powerful library for managing asynchronous calls inside react, but it requires lots of boilerplate, unintuitive code, so I decided to create a configurable interface over it that `just works` and allows you to focus on fast development instead moving chunks of code from one file to another.
+With this hook, you can easily render components showing them as a modal:
+- View components as a modals.
+- Share logic to the modal component.
+- Call toggle function to open/close the modal.
 
+## Usage
 
-## Features
-- Simple [API request action definition][api-type]
-- No headache [WebSocket message listeners][socketmanager]
-- Clean [state manipulation][create-json-requests] using javascript immutable objects
-- Strong typed [selectors][selectors] for accessing the state
+Just install:
 
-[docs]: https://stoica.dev/redux-state-manager/#
-[api-type]: https://stoica.dev/redux-state-manager/#/apimanager#api-type
-[create-json-requests]: https://stoica.dev/redux-state-manager/#/apimanager#create-json-requests
-[socketmanager]: https://stoica.dev/redux-state-manager/#/socketmanager
-[selectors]: https://stoica.dev/redux-state-manager/#/selectors
+```bash
+npm install --save react-use-modal
+
+or
+
+yarn add react-use-modal
+```
+
+And import the hook:
+
+```javascript
+import useModal from 'react-use-modal';
+```
+
+Use it in your component:
+
+```jsx
+import CustomModal from 'components/CustomModal';
+
+const YourComponent = props => {
+  const [Modal, showModal, visible] = useModal(CustomModal);
+
+  return (
+    <div>
+      <button onClick={showModal}>show modal</button>
+      <Modal />
+    </div>
+  )
+}
+```

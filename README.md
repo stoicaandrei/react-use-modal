@@ -1,4 +1,4 @@
-# react-use-modal
+# react-use-modal-hook
 
 Hook to wrap a component and show it as a modal.
 
@@ -27,11 +27,11 @@ With this hook, you can easily render components showing them as a modal:
 ### Install:
 
 ```bash
-npm install --save react-use-modal
+npm install --save react-use-modal-hook
 
 or
 
-yarn add react-use-modal
+yarn add react-use-modal-hook
 ```
 
 ### How to use

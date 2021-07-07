@@ -8,10 +8,11 @@ type ModalProps = {
 type OmitModalProps<T> = Omit<T, 'visible' | 'hide'>;
 
 const useModal = <T extends ModalProps>(
-  Modal: React.FC<T>
+  Modal: React.FC<T>,
+  defaultProps?: OmitModalProps<T>,
 ): [React.FC, (data: OmitModalProps<T>) => void, boolean] => {
   const [visibleModal, setVisibleModal] = useState(false);
-  const [props, setProps] = useState<OmitModalProps<T>>();
+  const [props, setProps] = useState(defaultProps || {});
 
   const showModal = (data: OmitModalProps<T>) => {
     setProps(data);
@@ -20,9 +21,7 @@ const useModal = <T extends ModalProps>(
 
   const hide = () => setVisibleModal(false);
 
-  const RenderedModal: React.FC = () => (
-    <Modal {...(props as T)} visible={visibleModal} hide={hide} />
-  );
+  const RenderedModal: React.FC = () => <Modal {...(props as T)} visible={visibleModal} hide={hide} />;
 
   return [RenderedModal, showModal, visibleModal];
 };

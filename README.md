@@ -114,7 +114,7 @@ import useModal from 'react-use-modal-hook';
 import CustomModal from './CustomModal';
 
 const YourComponent = props => {
-  const [Modal, showModal, visible] = useModal(CustomModal);
+  const [Modal, showModal, visible] = useModal(CustomModal, { title: 'default', content: 'default' });
 
   return (
     <div>
